@@ -1,0 +1,575 @@
+<!DOCTYPE html> 
+<html>
+<head>
+<meta charset="utf-8">
+<title>Test One</title>
+<meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+    
+<link href="libs/jquery.mobile.theme-1.0.min.css" rel="stylesheet" type="text/css"/>
+<link href="libs/jquery.mobile.structure-1.0.min.css" rel="stylesheet" type="text/css"/>
+<script src="libs/jquery-1.6.4.min.js" type="text/javascript"></script>
+<script src="libs/jquery.mobile-1.0.min.js" type="text/javascript"></script>
+
+<link href="assets/style/style.css" rel="stylesheet" type="text/css"/>
+
+<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+<script type="text/javascript" charset="utf-8">
+    document.addEventListener("deviceready", onDeviceReady, false);    // Wait for Cordova to load
+    function onDeviceReady() {// Cordova is ready
+        //alert('*** Device is ready ***');
+    }
+</script>
+
+</head> 
+
+<script>
+
+	function init(){
+		onAppResize();
+	}
+	
+	function onAppResize(){
+		var headerH = document.getElementById('headerDiv').style.height;
+		var footerH = document.getElementById('footerDiv').style.height;
+		headerH = $('#headerDiv').height();
+		footerH = $('#footerDiv').height();
+	
+		if(footerH == 0 || headerH == 0){
+			headerH = 50;
+			footerH = 45;
+		}
+		
+		var appHeight = window.innerHeight;
+		var contentH = appHeight-(headerH+footerH)-45;
+	
+		document.getElementById('contentDiv_about').style.height = contentH+'px';
+		document.getElementById('contentDiv_menu').style.height = contentH+'px';
+		document.getElementById('contentDiv_catering').style.height = contentH+'px';
+		document.getElementById('contentDiv_contact').style.height = contentH+'px';
+		
+		//document.getElementById('cateringPdfIframe').style.height = contentH+'px';
+		
+	}
+	
+	function onMenuLinkClick(type){
+		document.location.href = 	type+'.html';
+	}
+	
+	function onEmailSendClick(){
+		document.location.href = '#aboutUsPage';
+		//<li><a onclick="location.href='HotelBooking.html';" href="HotelBooking.html">BOOK A ROOM</a></li>
+	}
+	
+</script>
+
+<body onResize="onAppResize()" onLoad="init()"> 
+
+    <!-- About Us START -->
+    <div data-role="page" id="aboutUsPage">
+        <div id="headerDiv" data-role="header">
+            <h1></h1>
+            <img id="abouticon_header" src="assets/image/abouticon_header_02.png" class="ui-btn-left"/>
+        </div>
+        
+        <div id="contentDiv_about" data-role="content" style="height:320px;">	
+            <ul data-role="listview">
+                <div id="aboutTxt">
+                
+                Welcome to La Pizza - Roseland's number one choice for pizza and Italian food! We pride ourselves on providing the highest levels of customer service, and we only use the absolute freshest, best quality ingredients for all of our dishes. From pasta to pizza to antipasti, La Pizza has something for each and every palette. The Cataldi family recipes have been handed down from generation to generation, and we hope you and your family will continue to enjoy our rich tradtion of Italian cooking for years to come. 
+              <br><br>  We know there are many choices out there -- from everyone at La Pizza in Roseland, we graciously extend our sincere appreciation for your support and patronage. Our goal is to always provide you with a truly satisfying eating experience. 
+                <br> <br> Do you have an upcoming event or party? Leave the details for all of your special occasions to the expert caterers at La Pizza. Whether you are planning a corporate luncheon, family gathering, or just an old-fashioned pizza night, La Pizza will ensure that your day will be truly distinctive and memorable. Call us now <a href="#" onclick="window.open('tel:973-226-6268', '_system', 'location=yes');">973-226-6268</a>.
+                </div>
+            </ul>		
+        </div>
+        
+        <div id="footerDiv" data-role="footer" data-id="foo1" data-position="fixed">
+            <div data-role="navbar" data-iconpos="top">
+                <ul>
+                    <li><a id="aboutUsBtn" href="#aboutUsPage" data-icon="aboutUs" class="ui-btn-active ui-state-persist">About Us</a></li>
+                    <li><a id="menuBtn" href="#menuPage" data-icon="menuIcon">Menu</a></li>            
+                    <li><a id="cateringBtn" href="#cateringPage" data-icon="cateringIcon">Catering</a></li>
+                    <li><a id="orderUsBtn" data-icon="orderIcon" href="#" 
+                        onclick="window.open('https://order-it-on.com/merchantmanagement/merchant_info.php?id=577&sta=Open','_system','location=yes')">Order Online</a>
+                    </li>
+                    <li><a id="contactUsBtn" href="#contactUsPage" data-icon="contactUsIcon">Contact Us</a></li>
+                </ul>
+            </div><!-- /navbar -->
+        </div><!-- /footer -->
+    </div>
+
+
+    <!-- Menu START -->
+    <div data-role="page" id="menuPage">
+       <div id="headerDiv_menu" data-role="header">
+            <h1></h1>
+            <img id="menuicon_header" src="assets/image/menuicon_header_02.png" class="ui-btn-left"/>            
+       </div>
+        
+       <div id="contentDiv_menu" data-role="content" style="height:320px;">	
+          <div data-role="navbar" data-iconpos="top">
+             <li class="menuTxt" onClick="onMenuLinkClick('subMenuPage_pizza')">
+                <p>Pizza
+                	<img style="width:100%" src="assets/image/menu_line_03.png"/>
+                </p>
+             </li>
+             <li class="menuTxt" onClick="onMenuLinkClick('subMenuPage_GourmetPizza')">
+                <p>Gourmet Pizza
+                	<img style="width:100%" src="assets/image/menu_line_03.png"/>
+                </p>
+             </li>
+             <li class="menuTxt" onClick="onMenuLinkClick('subMenuPage_Calzones')">
+                <p>Calzones
+               		 <img style="width:100%" src="assets/image/menu_line_03.png"/>
+                </p>
+             </li>
+             <li class="menuTxt" onClick="onMenuLinkClick('subMenuPage_HotSandwiches')">
+                <p class="menuTxt">Hot Sandwiches
+                	<img style="width:100%" src="assets/image/menu_line_03.png"/>
+                </p>
+             </li>
+             <li class="menuTxt" onClick="onMenuLinkClick('subMenuPage_ColdSubs')">
+                <p>Cold Subs
+                	<img style="width:100%" src="assets/image/menu_line_03.png"/>
+                </p>
+            </li>
+            <li class="menuTxt" onClick="onMenuLinkClick('subMenuPage_Appetizers')">
+                <p>Appetizers
+                	<img style="width:100%" src="assets/image/menu_line_03.png"/>
+                </p>
+            </li>
+            <li class="menuTxt" onClick="onMenuLinkClick('subMenuPage_Pasta')">
+                <p>Pasta
+               	 	<img style="width:100%" src="assets/image/menu_line_03.png"/>
+                 </p>
+            </li>
+            
+             <li class="menuTxt" onClick="onMenuLinkClick('subMenuPage_Dinners')">
+                <p>Dinners
+               	 	<img style="width:100%" src="assets/image/menu_line_03.png"/>
+                 </p>
+            </li>
+            
+            <li class="menuTxt" onClick="onMenuLinkClick('subMenuPage_Beverages')">
+                <p>Beverages
+               	 	<img style="width:100%" src="assets/image/menu_line_03.png"/>
+                 </p>
+            </li>
+            
+            <li class="menuTxt" onClick="onMenuLinkClick('subMenuPage_Desserts')">
+                <p>Desserts
+               	 	<img style="width:100%" src="assets/image/menu_line_03.png"/>
+                 </p>
+            </li>
+            
+         </div>
+       </div>
+       
+       <div id="footerDiv_menu" data-role="footer" data-id="foo2" data-position="fixed">
+            <div data-role="navbar" data-iconpos="top">
+                <ul>
+                    <li><a id="aboutUsBtn" href="#aboutUsPage" data-icon="aboutUs">About Us</a></li>
+                    <li><a id="menuBtn" href="#menuPage" data-icon="menuIcon" class="ui-btn-active ui-state-persist">Menu</a></li>            
+                    <li><a id="cateringBtn" href="#cateringPage" data-icon="cateringIcon">Catering</a></li>
+                    <li><a id="orderUsBtn" data-icon="orderIcon" href="#" 
+                        onclick="window.open('https://order-it-on.com/merchantmanagement/merchant_info.php?id=577&sta=Open','_system','location=yes')">Order Online</a>
+                    </li>
+                    <li><a id="contactUsBtn" href="#contactUsPage" data-icon="contactUsIcon">Contact Us</a></li>
+                </ul>
+            </div><!-- /navbar -->
+        </div><!-- /footer -->
+    </div>
+
+
+	<!-- Catering START -->
+    <div data-role="page" id="cateringPage">
+    	<div id="headerDiv_catering" data-role="header">
+            <h1></h1>
+            <img class="ui-btn-left"/>
+            <img id="menuicon_header" src="assets/image/catering_header_icon_03.png" style="height:55px;width:110px;" class="ui-btn-left"/>
+       </div>
+        
+       <div id="contentDiv_catering" data-role="content" style="height:320px;overflow-x:auto;">	
+            <ul data-role="listview">
+            	
+                <DIV id="page_1">
+
+
+<TABLE cellpadding=0 cellspacing=0 class="t0">
+<TR>
+	<TD class="tr0 td0"><P class="p0 ft0">ANTIPASTI</P></TD>
+	<TD class="tr0 td1"><P class="p1 ft0">Half Tray</P></TD>
+	<TD class="tr0 td2"><P class="p2 ft0">Full Tray</P></TD>
+</TR>
+<TR>
+	<TD class="tr1 td0"><P class="p0 ft1">Fresh Mozzarella, Roasted Peppers, Sliced Tomato</P></TD>
+	<TD class="tr1 td1"><P class="p1 ft1">$45.00</P></TD>
+	<TD class="tr1 td2"><P class="p2 ft1">$60.00</P></TD>
+</TR>
+<TR>
+	<TD class="tr2 td0"><P class="p0 ft3"><SPAN class="ft2">Tossed Salad </SPAN>(Lettuce, tomato, red onion, carrots, and olives)</P></TD>
+	<TD class="tr2 td1"><P class="p1 ft2">$25.00</P></TD>
+	<TD class="tr2 td2"><P class="p2 ft2">$40.00</P></TD>
+</TR>
+<TR>
+	<TD class="tr1 td0"><P class="p0 ft3"><SPAN class="ft1">Arugula Salad </SPAN>(Provolone, roasted peppers, and balsamic)</P></TD>
+	<TD class="tr1 td1"><P class="p1 ft1">$30.00</P></TD>
+	<TD class="tr1 td2"><P class="p2 ft1">$55.00</P></TD>
+</TR>
+<TR>
+	<TD class="tr1 td0"><P class="p0 ft3"><SPAN class="ft1">Greek Salad </SPAN>(Feta, kalamata olives, pepperoncini)</P></TD>
+	<TD class="tr1 td1"><P class="p1 ft1"><SPAN class="ft4">$</SPAN>35.00</P></TD>
+	<TD class="tr1 td2"><P class="p2 ft1">$65.00</P></TD>
+</TR>
+<TR>
+	<TD class="tr1 td0"><P class="p0 ft3"><SPAN class="ft1">Antipasto Salad </SPAN>(Tossed salad with Italian meats and cheeses)</P></TD>
+	<TD class="tr1 td1"><P class="p1 ft1">$35.00</P></TD>
+	<TD class="tr1 td2"><P class="p2 ft1">$55.00</P></TD>
+</TR>
+<TR>
+	<TD class="tr1 td0"><P class="p0 ft1">Chicken Caesar Salad</P></TD>
+	<TD class="tr1 td1"><P class="p1 ft1">$45.00</P></TD>
+	<TD class="tr1 td2"><P class="p2 ft1">$75.00</P></TD>
+</TR>
+<TR>
+	<TD class="tr1 td0"><P class="p0 ft1">Mussels Marinara</P></TD>
+	<TD class="tr1 td1"><P class="p1 ft1">$35.00</P></TD>
+	<TD class="tr1 td2"><P class="p2 ft1">$55.00</P></TD>
+</TR>
+<TR>
+	<TD class="tr1 td0"><P class="p0 ft3"><SPAN class="ft1">Broccoli Rabe </SPAN>(Sautéed with garlic and oil)</P></TD>
+	<TD class="tr1 td1"><P class="p1 ft1">$50.00</P></TD>
+	<TD class="tr1 td2"><P class="p2 ft1">$80.00</P></TD>
+</TR>
+<TR>
+	<TD class="tr1 td0"><P class="p0 ft1">Stuffed Mushrooms</P></TD>
+	<TD class="tr1 td1"><P class="p1 ft1">$45.00</P></TD>
+	<TD class="tr1 td2"><P class="p2 ft1">$80.00</P></TD>
+</TR>
+<TR>
+	<TD class="tr1 td0"><P class="p0 ft1">Chicken Fingers</P></TD>
+	<TD class="tr1 td1"><P class="p1 ft1">$45.00</P></TD>
+	<TD class="tr1 td2"><P class="p2 ft1">$65.00</P></TD>
+</TR>
+<TR>
+	<TD class="tr1 td0"><P class="p0 ft1">Zucchini Stick</P></TD>
+	<TD class="tr1 td1"><P class="p1 ft1">$45.00</P></TD>
+	<TD class="tr1 td2"><P class="p2 ft1">$65.00</P></TD>
+</TR>
+<TR>
+	<TD class="tr1 td0"><P class="p0 ft1">Mozzarella Sticks</P></TD>
+	<TD class="tr1 td1"><P class="p1 ft1">$45.00</P></TD>
+	<TD class="tr1 td2"><P class="p2 ft1">$65.00</P></TD>
+</TR>
+</TABLE>
+<TABLE cellpadding=0 cellspacing=0 class="t1">
+<TR>
+	<TD class="tr3 td3"><P class="p0 ft0">PASTA</P></TD>
+	<TD class="tr3 td4"><P class="p3 ft0">Half Tray</P></TD>
+	<TD class="tr3 td2"><P class="p2 ft0">Full Tray</P></TD>
+</TR>
+<TR>
+	<TD class="tr1 td3"><P class="p0 ft3"><SPAN class="ft1">Rigatoni Marinara </SPAN>(Fresh plum tomato sauce)</P></TD>
+	<TD class="tr1 td4"><P class="p3 ft1">$35.00</P></TD>
+	<TD class="tr1 td2"><P class="p2 ft1">$60.00</P></TD>
+</TR>
+<TR>
+	<TD class="tr1 td3"><P class="p0 ft1">Rigatoni w/ Vodka Sauce</P></TD>
+	<TD class="tr1 td4"><P class="p3 ft1">$40.00</P></TD>
+	<TD class="tr1 td2"><P class="p2 ft1">$75.00</P></TD>
+</TR>
+<TR>
+	<TD class="tr1 td3"><P class="p0 ft3"><SPAN class="ft1">Lasagna </SPAN>(Meat or cheese)</P></TD>
+	<TD class="tr1 td4"><P class="p3 ft1">$45.00</P></TD>
+	<TD class="tr1 td2"><P class="p2 ft1">$80.00</P></TD>
+</TR>
+<TR>
+	<TD class="tr1 td3"><P class="p0 ft1">Cheese or Meat Tortellini w/Alfredo Sauce</P></TD>
+	<TD class="tr1 td4"><P class="p3 ft1">$45.00</P></TD>
+	<TD class="tr1 td2"><P class="p2 ft1">$80.00</P></TD>
+</TR>
+<TR>
+	<TD class="tr1 td3"><P class="p0 ft1">Cheese Ravioli</P></TD>
+	<TD class="tr1 td4"><P class="p3 ft1">$40.00</P></TD>
+	<TD class="tr1 td2"><P class="p2 ft1">$60.00</P></TD>
+</TR>
+<TR>
+	<TD class="tr1 td3"><P class="p0 ft1">Stuffed Shells</P></TD>
+	<TD class="tr1 td4"><P class="p3 ft1">$40.00</P></TD>
+	<TD class="tr1 td2"><P class="p2 ft1">$60.00</P></TD>
+</TR>
+<TR>
+	<TD class="tr1 td3"><P class="p0 ft1">Manicotti</P></TD>
+	<TD class="tr1 td4"><P class="p3 ft1">$40.00</P></TD>
+	<TD class="tr1 td2"><P class="p2 ft1">$60.00</P></TD>
+</TR>
+<TR>
+	<TD class="tr1 td3"><P class="p0 ft1">Baked Ziti</P></TD>
+	<TD class="tr1 td4"><P class="p3 ft1">$40.00</P></TD>
+	<TD class="tr1 td2"><P class="p2 ft1">$60.00</P></TD>
+</TR>
+<TR>
+	<TD class="tr2 td3"><P class="p0 ft3"><SPAN class="ft2">Cavatelli w/ Broccoli </SPAN>(In garlic & oil sauce)</P></TD>
+	<TD class="tr2 td4"><P class="p3 ft2">$45.00</P></TD>
+	<TD class="tr2 td2"><P class="p2 ft2">$70.00</P></TD>
+</TR>
+<TR>
+	<TD class="tr4 td3"><P class="p0 ft1">Rigatoni w/ Sausage and Broccoli Rabe <SPAN class="ft3">(In garlic & oil sauce)</SPAN></P></TD>
+	<TD class="tr4 td4"><P class="p3 ft1">$50.00</P></TD>
+	<TD class="tr4 td2"><P class="p2 ft1">$80.00</P></TD>
+</TR>
+</TABLE>
+<TABLE cellpadding=0 cellspacing=0 class="t1">
+<TR>
+	<TD class="tr3 td5"><P class="p0 ft0">ENTREES</P></TD>
+	<TD class="tr3 td6"><P class="p4 ft0">Half Tray</P></TD>
+	<TD class="tr3 td7"><P class="p0 ft0">Full Tray</P></TD>
+</TR>
+<TR>
+	<TD class="tr1 td5"><P class="p0 ft3"><SPAN class="ft1">Chicken Piccata </SPAN>(White wine, lemon and caper sauce)</P></TD>
+	<TD class="tr1 td6"><P class="p4 ft1">$45.00</P></TD>
+	<TD class="tr1 td7"><P class="p0 ft1">$95.00</P></TD>
+</TR>
+<TR>
+	<TD class="tr1 td5"><P class="p0 ft3"><SPAN class="ft1">Chicken Francese </SPAN>(White wine and lemon sauce)</P></TD>
+	<TD class="tr1 td6"><P class="p4 ft1">$45.00</P></TD>
+	<TD class="tr1 td7"><P class="p0 ft1">$95.00</P></TD>
+</TR>
+<TR>
+	<TD class="tr1 td5"><P class="p0 ft3"><SPAN class="ft1">Chicken Marsala </SPAN>(Marsala wine and mushrooms)</P></TD>
+	<TD class="tr1 td6"><P class="p4 ft1">$45.00</P></TD>
+	<TD class="tr1 td7"><P class="p0 ft1">$95.00</P></TD>
+</TR>
+<TR>
+	<TD class="tr1 td5"><P class="p0 ft3"><SPAN class="ft1">Chicken Sorrentino </SPAN>(Proscuitto, tomato and mozzarella)</P></TD>
+	<TD class="tr1 td6"><P class="p4 ft1">$50.00</P></TD>
+	<TD class="tr1 td7"><P class="p0 ft1">$100.00</P></TD>
+</TR>
+<TR>
+	<TD class="tr1 td5"><P class="p0 ft3"><SPAN class="ft1">Chicken Giambotta </SPAN>(Peppers, onion, potatoes)</P></TD>
+	<TD class="tr1 td6"><P class="p4 ft1">$50.00</P></TD>
+	<TD class="tr1 td7"><P class="p0 ft1">$100.00</P></TD>
+</TR>
+<TR>
+	<TD class="tr1 td5"><P class="p0 ft1">Chicken Parmigiana</P></TD>
+	<TD class="tr1 td6"><P class="p4 ft1">$45.00</P></TD>
+	<TD class="tr1 td7"><P class="p0 ft1">$90.00</P></TD>
+</TR>
+<TR>
+	<TD class="tr1 td5"><P class="p0 ft1">Eggplant Rollatini</P></TD>
+	<TD class="tr1 td6"><P class="p4 ft1">$45.00</P></TD>
+	<TD class="tr1 td7"><P class="p0 ft1">$90.00</P></TD>
+</TR>
+<TR>
+	<TD class="tr2 td5"><P class="p0 ft2">Eggplant Parmigiana</P></TD>
+	<TD class="tr2 td6"><P class="p4 ft2">$40.00</P></TD>
+	<TD class="tr2 td7"><P class="p0 ft2">$80.00</P></TD>
+</TR>
+<TR>
+	<TD class="tr1 td5"><P class="p0 ft1">Sausage, Peppers and Onions <SPAN class="ft3">(With tomato sauce)</SPAN></P></TD>
+	<TD class="tr1 td6"><P class="p4 ft1">$40.00</P></TD>
+	<TD class="tr1 td7"><P class="p0 ft1">$80.00</P></TD>
+</TR>
+<TR>
+	<TD class="tr1 td5"><P class="p0 ft1">Meatballs w/ Tomato Sauce</P></TD>
+	<TD class="tr1 td6"><P class="p4 ft1">$40.00</P></TD>
+	<TD class="tr1 td7"><P class="p0 ft1">$80.00</P></TD>
+</TR>
+<TR>
+	<TD class="tr1 td5"><P class="p0 ft1">Flounder Francese</P></TD>
+	<TD class="tr1 td6"><P class="p4 ft1">Market Price</P></TD>
+	<TD class="tr1 td7"><P class="p0 ft5">&nbsp;</P></TD>
+</TR>
+<TR>
+	<TD class="tr1 td5"><P class="p0 ft1">Zuppa di Pesce</P></TD>
+	<TD class="tr1 td6"><P class="p4 ft1">Market Price</P></TD>
+	<TD class="tr1 td7"><P class="p0 ft5">&nbsp;</P></TD>
+</TR>
+<TR>
+	<TD class="tr5 td5"><P class="p0 ft0">DOLCI</P></TD>
+	<TD class="tr5 td6"><P class="p0 ft5">&nbsp;</P></TD>
+	<TD class="tr5 td7"><P class="p0 ft5">&nbsp;</P></TD>
+</TR>
+<TR>
+	<TD class="tr1 td5"><P class="p0 ft1">Tiramisu</P></TD>
+	<TD class="tr1 td6"><P class="p4 ft1">$39.50</P></TD>
+	<TD class="tr1 td7"><P class="p0 ft5">&nbsp;</P></TD>
+</TR>
+<TR>
+	<TD class="tr1 td5"><P class="p0 ft1">Cannoli <SPAN class="ft3">(Dozen)</SPAN></P></TD>
+	<TD class="tr1 td6"><P class="p4 ft1">$27.50</P></TD>
+	<TD class="tr1 td7"><P class="p0 ft5">&nbsp;</P></TD>
+</TR>
+<TR>
+	<TD class="tr1 td5"><P class="p0 ft1">Assorted Italian Cookies</P></TD>
+	<TD class="tr1 td6"><P class="p4 ft6">Price per Pound</P></TD>
+	<TD class="tr1 td7"><P class="p0 ft5">&nbsp;</P></TD>
+</TR>
+<TR>
+	<TD class="tr1 td5"><P class="p0 ft1">Fresh Fruit Platter</P></TD>
+	<TD class="tr1 td6"><P class="p4 ft1">Seasonal</P></TD>
+	<TD class="tr1 td7"><P class="p0 ft5">&nbsp;</P></TD>
+</TR>
+</TABLE>
+</DIV>
+<DIV id="page_2">
+
+
+<TABLE cellpadding=0 cellspacing=0 class="t2">
+<TR>
+	<TD class="tr0 td8"><P class="p0 ft0">SANDWICHES</P></TD>
+	<TD class="tr0 td9"><P class="p0 ft5">&nbsp;</P></TD>
+</TR>
+<TR>
+	<TD class="tr1 td8"><P class="p0 ft1">3 Foot Subs</P></TD>
+	<TD class="tr1 td9"><P class="p0 ft1">28.00 per Foot</P></TD>
+</TR>
+<TR>
+	<TD class="tr6 td8"><P class="p0 ft3">Choose from:</P></TD>
+	<TD class="tr6 td9"><P class="p0 ft5">&nbsp;</P></TD>
+</TR>
+<TR>
+	<TD class="tr1 td8"><P class="p0 ft1">Grilled Chicken, Roasted Peppers, Fresh Mozzarella, &Arugula</P></TD>
+	<TD class="tr1 td9"><P class="p0 ft5">&nbsp;</P></TD>
+</TR>
+<TR>
+	<TD class="tr1 td8"><P class="p0 ft1">Grilled Eggplant, Roasted Peppers, Fresh Mozzarella & Arugula</P></TD>
+	<TD class="tr1 td9"><P class="p0 ft5">&nbsp;</P></TD>
+</TR>
+<TR>
+	<TD class="tr1 td8"><P class="p0 ft1">Prosciutto, Roasted Peppers, Fresh Mozzarella & Arugula</P></TD>
+	<TD class="tr1 td9"><P class="p0 ft5">&nbsp;</P></TD>
+</TR>
+<TR>
+	<TD class="tr1 td8"><P class="p0 ft1">Turkey</P></TD>
+	<TD class="tr1 td9"><P class="p0 ft5">&nbsp;</P></TD>
+</TR>
+<TR>
+	<TD class="tr1 td8"><P class="p0 ft1">Roast Beef</P></TD>
+	<TD class="tr1 td9"><P class="p0 ft5">&nbsp;</P></TD>
+</TR>
+<TR>
+	<TD class="tr1 td8"><P class="p0 ft1">Tuna</P></TD>
+	<TD class="tr1 td9"><P class="p0 ft5">&nbsp;</P></TD>
+</TR>
+<TR>
+	<TD class="tr2 td8"><P class="p0 ft3"><SPAN class="ft2">Italian </SPAN>(Ham, cheese, salami)</P></TD>
+	<TD class="tr2 td9"><P class="p0 ft7">&nbsp;</P></TD>
+</TR>
+<TR>
+	<TD class="tr1 td8"><P class="p0 ft1">Chicken Parmigiana</P></TD>
+	<TD class="tr1 td9"><P class="p0 ft5">&nbsp;</P></TD>
+</TR>
+<TR>
+	<TD class="tr1 td8"><P class="p0 ft1">Meatball Parmigiana</P></TD>
+	<TD class="tr1 td9"><P class="p0 ft5">&nbsp;</P></TD>
+</TR>
+<TR>
+	<TD class="tr7 td8"><P class="p0 ft3">**ASSORTED SANDWICH/WRAP PLATTERS ALSO AVAILABLE**</P></TD>
+	<TD class="tr7 td9"><P class="p0 ft5">&nbsp;</P></TD>
+</TR>
+</TABLE>
+</DIV>
+
+            </ul>		
+       </div>
+       
+    	<div id="footerDiv_catering" data-role="footer" data-id="foo3" data-position="fixed">
+            <div data-role="navbar" data-iconpos="top">
+                <ul>
+                    <li><a id="aboutUsBtn" href="#aboutUsPage" data-icon="aboutUs">About Us</a></li>
+                    <li><a id="menuBtn" href="#menuPage" data-icon="menuIcon">Menu</a></li>            
+                    <li><a id="cateringBtn" href="#cateringPage" data-icon="cateringIcon" class="ui-btn-active ui-state-persist">Catering</a></li>
+                    <li><a id="orderUsBtn" data-icon="orderIcon" href="#" 
+                        onclick="window.open('https://order-it-on.com/merchantmanagement/merchant_info.php?id=577&sta=Open','_system','location=yes')">Order Online</a>
+                    </li>
+                    <li><a id="contactUsBtn" href="#contactUsPage" data-icon="contactUsIcon">Contact Us</a></li>
+                </ul>
+            </div><!-- /navbar -->
+        </div><!-- /footer -->
+    </div>
+    
+    <!-- Contact us -->
+    <div data-role="page" id="contactUsPage">
+    	<div id="headerDiv_contact" data-role="header">
+            <h1></h1>
+            <img id="contacticon_header" src="assets/image/contacticon_header_02.png" class="ui-btn-left"/>
+       </div>
+        
+       <div id="contentDiv_contact" data-role="content" style="height:320px;">	
+            <ul data-role="listview">
+              	<div id="contactUsDiv" style="width:80%; float:left;  padding-top: 20px;">         
+                                    
+                    <span style="font-size:20px;font-family:Arial;">La Pizza Pizzeria &amp; Restaurant</span>
+	                  <p></p>
+                      <p>178 Eagle Rock Ave<br>
+						Roseland, NJ 07068<br>
+	                    <strong>
+                        Phone: <a href="#" onclick="window.open('tel:973-226-6268', '_system', 'location=yes');">973-226-6268</a>
+                        </strong><br>
+						 <strong>Fax: 973-226-9288</strong><br>
+                  	  </p>
+                  <div>
+
+					<p></p>
+                    <p></p>
+                    <p></p>
+                    
+					<p onClick="document.location.href = 'mapPage.html'">
+                      <button>Click here for our location</button>
+                   </p>
+                    
+                    <p></p>
+                    <p></p>
+                    <p></p>
+				  <form action="contact.php" method="post">
+                    <p style="padding:10px 0 3px;">Name* <br>
+                      <span>
+                      <input type="text" style="height:22px;" name="your-name" value="" size="50">
+                      </span> </p>
+                      <p style="padding:10px 0 3px;">Phone* <br>
+                          <span>
+                              <input type="text" style="height:22px;" name="your-phone" value="" size="50">
+                          </span> 
+                      </p>
+
+                    <p style="padding:10px 0 3px;">Email* <br>
+                      <span>
+                          <input type="text" style="height:22px;" name="your-email" value="" size="50">
+                      </span> </p>
+
+                    <p style="padding:10px 0 3px;">Message* <br>
+                      <textarea name="your-message" class="wpcf7-use-title-as-watermark" cols="40" rows="10" 
+                      title="Enter your Message:"></textarea>
+                    </p>
+                    
+                    <p onClick="onEmailSendClick()">
+                      <button>Send</button>
+                    </p>
+                    
+                  </form>
+				</div>
+                
+            </ul>		
+       </div>
+    
+    	<div id="footerDiv_contact" data-role="footer" data-id="foo5" data-position="fixed">
+            <div data-role="navbar" data-iconpos="top">
+                <ul>
+                    <li><a id="aboutUsBtn" href="#aboutUsPage" data-icon="aboutUs">About Us</a></li>
+                    <li><a id="menuBtn" href="#menuPage" data-icon="menuIcon">Menu</a></li>            
+                    <li><a id="cateringBtn" href="#cateringPage" data-icon="cateringIcon">Catering</a></li>
+                    <li><a id="orderUsBtn" data-icon="orderIcon" href="#" 
+                        onclick="window.open('https://order-it-on.com/merchantmanagement/merchant_info.php?id=577&sta=Open','_system','location=yes')">Order Online</a>
+                    </li>
+                    <li><a id="contactUsBtn" href="#contactUsPage" data-icon="contactUsIcon" class="ui-btn-active ui-state-persist">Contact Us</a></li>
+                </ul>
+            </div><!-- /navbar -->
+        </div><!-- /footer -->
+    </div>
+    
+    
+    
+</body>
+</html>
